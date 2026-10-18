@@ -183,6 +183,7 @@ export default function App() {
 
         
 
+
 <nav
   className="dock"
   aria-label="Dock"
@@ -193,16 +194,13 @@ export default function App() {
   }}
   onMouseLeave={() => setHoverX(null)}
 >
-  {dockApps.map((app) => {
-    const buttons = Array.from(
-      dockRef.current?.querySelectorAll<HTMLButtonElement>('.dock-app') ?? [],
-    )
-    const index = dockApps.findIndex((item) => item.label === app.label)
-    const button = buttons[index]
-    const center = button
-      ? button.offsetLeft + button.offsetWidth / 2
-      : 0
-    const distance = hoverX === null ? Infinity : Math.abs(hoverX - center)
+  {dockApps.map((app, index) => {
+    const itemWidth = 54
+    const gap = 7
+    const padding = 10
+    const center = padding + index * (itemWidth + gap) + itemWidth / 2
+    const distance =
+      hoverX === null ? Infinity : Math.abs(hoverX - center)
     const influence = Math.max(0, 1 - distance / 150)
     const scale = 1 + Math.pow(influence, 1.5) * 0.8
 
@@ -222,6 +220,7 @@ export default function App() {
     )
   })}
 </nav>
+
 
 
       </div>
