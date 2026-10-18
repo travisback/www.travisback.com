@@ -1,0 +1,24 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#e8edf2"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39e4ff"/>
+      <stop offset="1" stop-color="#0079ed"/>
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="122" height="122" rx="27" fill="url(#tile)"/>
+  <circle cx="64" cy="64" r="49" fill="url(#sea)"/>
+  <circle cx="64" cy="64" r="43" fill="none" stroke="#fff" stroke-opacity=".65" stroke-width="2"/>
+  <g stroke="#fff" stroke-opacity=".85" stroke-width="2">
+    <path d="M64 18v7 M64 103v7 M18 64h7 M103 64h7"/>
+    <path d="m31.5 31.5 5 5 M91.5 91.5l5 5 M96.5 31.5l-5 5 M36.5 91.5l-5 5"/>
+    <path d="m47 21 2 6 M79 101l2 6 M21 47l6 2 M101 79l6 2 M81 21l-2 6 M49 101l-2 6 M107 47l-6 2 M27 79l-6 2"/>
+  </g>
+  <path d="M87 36 69 70 39 91 57 57Z" fill="#fa334d"/>
+  <path d="M87 36 57 57 69 70Z" fill="#fff"/>
+  <circle cx="64" cy="64" r="4" fill="#fff" stroke="#163e71" stroke-width="2"/>
+</svg>

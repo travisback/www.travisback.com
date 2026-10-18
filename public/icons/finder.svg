@@ -1,0 +1,53 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="finderBackground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#76dcff"/>
+      <stop offset="100%" stop-color="#0875e8"/>
+    </linearGradient>
+    <linearGradient id="finderRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5fbff"/>
+      <stop offset="100%" stop-color="#c5e9ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#finderBackground)"/>
+
+  <path
+    d="M32 2h16a14 14 0 0 1 14 14v32a14 14 0 0 1-14 14H32Z"
+    fill="url(#finderRight)"
+  />
+
+  <path
+    d="M32 3v58"
+    fill="none"
+    stroke="#fff"
+    stroke-opacity=".55"
+    stroke-width="1.5"
+  />
+
+  <path
+    d="M18 25v9m28-9v9"
+    fill="none"
+    stroke="#17466e"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M17 43c4 5 9 7 15 2 6 5 11 3 15-2"
+    fill="none"
+    stroke="#17466e"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M9 14c2-5 6-8 12-9"
+    fill="none"
+    stroke="#fff"
+    stroke-opacity=".35"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+</svg>
