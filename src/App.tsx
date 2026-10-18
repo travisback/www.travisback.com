@@ -80,7 +80,7 @@ export default function App() {
       <div className={`desktop-interface ${startupFinished ? 'interface-visible' : ''}`}>
         <header className="menu-bar">
           <div className="menu-left">
-            <span className="menu-apple">●</span>
+            <img className="menu-apple" src="/apple.png" alt="Apple menu" />
             <strong>Finder</strong>
             <span>File</span>
             <span>Edit</span>

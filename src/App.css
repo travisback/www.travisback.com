@@ -123,8 +123,11 @@
 }
 
 .menu-apple {
-  font-size: 15px;
-  line-height: 1;
+  display: block;
+  width: 23px;
+  height: 27px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .menu-right {
