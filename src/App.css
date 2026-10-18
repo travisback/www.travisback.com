@@ -1,15 +1,35 @@
+
 #root {
   min-height: 100vh;
 }
 
-.boot-screen {
+* {
+  box-sizing: border-box;
+}
+
+.startup-experience {
   position: fixed;
   inset: 0;
-  display: grid;
-  place-items: center;
   overflow: hidden;
   background: #000;
   color: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.boot-screen {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  background: #000;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.boot-screen.boot-screen-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .boot-center {
@@ -44,41 +64,6 @@
   transition: width 35ms linear;
 }
 
-.boot-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  background: #000;
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-.boot-screen.boot-finished {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.desktop {
-  position: fixed;
-  inset: 0;
-  background-image: url("./assets/sunset.png");
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.desktop.desktop-visible {
-  opacity: 1;
-}
-
-.startup-experience {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  background: #000;
-}
-
 .desktop {
   position: absolute;
   inset: 0;
@@ -94,22 +79,140 @@
   opacity: 1;
 }
 
-.boot-screen {
+.desktop-interface {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 1s ease;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
 }
 
-.boot-screen.boot-screen-hidden {
-  opacity: 0;
-  pointer-events: none;
+.desktop-interface.interface-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  color: white;
+  background: rgba(28, 28, 30, 0.32);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  font-size: 13px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.menu-left,
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  white-space: nowrap;
+}
+
+.menu-left strong {
+  font-weight: 650;
+}
+
+.menu-apple {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.menu-right {
+  gap: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.dock {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  max-width: calc(100vw - 24px);
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 20px;
+  background: rgba(245, 245, 247, 0.24);
+  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transform: translateX(-50%);
+}
+
+.dock-app {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  border: 0;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.dock-app span {
+  font-size: 35px;
+  line-height: 1;
+}
+
+.dock-app:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-8px) scale(1.12);
+}
+
+@media (max-width: 640px) {
+  .menu-bar {
+    padding: 0 10px;
+  }
+
+  .menu-left {
+    gap: 10px;
+  }
+
+  .menu-left span:not(.menu-apple),
+  .menu-right span {
+    display: none;
+  }
+
+  .menu-right {
+    gap: 0;
+    font-size: 11px;
+  }
+
+  .dock {
+    bottom: 8px;
+    gap: 5px;
+    padding: 6px;
+  }
+
+  .dock-app {
+    width: 46px;
+    height: 46px;
+  }
+
+  .dock-app span {
+    font-size: 29px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .desktop,
-  .boot-screen {
+  .boot-screen,
+  .desktop-interface,
+  .dock-app {
     transition-duration: 0.01ms;
   }
 }
