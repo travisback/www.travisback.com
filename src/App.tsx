@@ -1,25 +1,20 @@
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import sunset from './assets/sunset.png'
 
-
 const dockApps = [
-  { icon: '/icons/finder.png', label: 'Finder', image: true },
-  { icon: '/icons/safari.svg', label: 'Safari', image: true },
-  { icon: '/icons/mail.svg', label: 'Mail', image: true },
-  { icon: '/icons/projects.svg', label: 'Projects', image: true },
-  { icon: '/icons/terminal.svg', label: 'Terminal', image: true },
+  { icon: '/icons/finder.png', label: 'Finder' },
+  { icon: '/icons/safari.svg', label: 'Safari' },
+  { icon: '/icons/mail.svg', label: 'Mail' },
+  { icon: '/icons/projects.svg', label: 'Projects' },
+  { icon: '/icons/terminal.svg', label: 'Terminal' },
 ]
-
 
 export default function App() {
   const [progress, setProgress] = useState(0)
   const [startupFinished, setStartupFinished] = useState(false)
   const [clock, setClock] = useState(new Date())
-
-  const dockRef = useRef<HTMLElement>(null)
-  const [hoverX, setHoverX] = useState<number | null>(null)
 
   useEffect(() => {
     const startedAt = Date.now()
@@ -181,48 +176,19 @@ export default function App() {
           </div>
         </header>
 
-        
-
-
-<nav
-  className="dock"
-  aria-label="Dock"
-  ref={dockRef}
-  onMouseMove={(event) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    setHoverX(event.clientX - rect.left)
-  }}
-  onMouseLeave={() => setHoverX(null)}
->
-  {dockApps.map((app, index) => {
-    const itemWidth = 54
-    const gap = 7
-    const padding = 10
-    const center = padding + index * (itemWidth + gap) + itemWidth / 2
-    const distance =
-      hoverX === null ? Infinity : Math.abs(hoverX - center)
-    const influence = Math.max(0, 1 - distance / 150)
-    const scale = 1 + Math.pow(influence, 1.5) * 0.8
-
-    return (
-      <button
-        className="dock-app"
-        key={app.label}
-        type="button"
-        aria-label={app.label}
-        title={app.label}
-        style={{
-          transform: `translateY(${-(scale - 1) * 14}px) scale(${scale})`,
-        }}
-      >
-        <img src={app.icon} alt="" />
-      </button>
-    )
-  })}
-</nav>
-
-
-
+        <nav className="dock" aria-label="Dock">
+          {dockApps.map((app) => (
+            <button
+              className="dock-app"
+              key={app.label}
+              type="button"
+              aria-label={app.label}
+              title={app.label}
+            >
+              <img src={app.icon} alt="" />
+            </button>
+          ))}
+        </nav>
       </div>
     </main>
   )
